@@ -1,0 +1,32 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: payment-service
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+
+# Kafka Config (commented)
+# spring.kafka.bootstrap-servers: localhost:9092
+#
+# spring.kafka.producer:
+#   key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#   value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#
+# spring.kafka.consumer:
+#   group-id: default-group
+#   key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#   value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#   auto-offset-reset: earliest
+#   enable-auto-commit: true
+#   max-poll-records: 500

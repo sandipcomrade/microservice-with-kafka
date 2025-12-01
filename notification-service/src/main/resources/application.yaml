@@ -1,25 +1,25 @@
+server:
+  port: 9093
+
 spring:
   application:
     name: notification-service
 
-  cloud:
-    consul:
-      host: localhost
-      port: 8500
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+#    fetch-registry: true
+#    register-with-eureka: true
 
-      discovery:
-        enabled: true
-        register: true
-        service-name: notification-service
-        prefer-ip-address: true
-        health-check-path: /actuator/health
-        health-check-interval: 10s
-
-server:
-  port: 9093
 
 management:
   endpoints:
     web:
       exposure:
-        include: health
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+
