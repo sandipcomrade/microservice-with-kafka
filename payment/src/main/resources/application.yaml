@@ -30,3 +30,14 @@ management:
 #   auto-offset-reset: earliest
 #   enable-auto-commit: true
 #   max-poll-records: 500
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9090/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+  instance:
+    prefer-ip-address: true
