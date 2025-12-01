@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: server-registry
+
+server:
+  port: 9090  # The Eureka server will now run on 9090
+  servlet:
+    context-path: /eureka
+
+eureka:
+  server:
+    eviction-interval-timer-in-ms: 5000
+  client:
+    register-with-eureka: false   # Do not register with another Eureka server
+    fetch-registry: false          # Do not fetch registry from other servers
+  instance:
+    enabled: false                 # This instance behaves purely as a server
