@@ -4,16 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.kafka.common.protocol.types.Field;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Order {
-    private String orderId;
-    private String orderName;
-    private boolean active;
+public class PaymentStatus {
+    private Long orderId;
+    private String status;
     private String mobileNo;
-    private double amount;
 }

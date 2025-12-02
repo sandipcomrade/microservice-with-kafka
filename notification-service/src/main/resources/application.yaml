@@ -5,13 +5,27 @@ spring:
   application:
     name: notification-service
 
+  kafka:
+    bootstrap-servers: localhost:19092
+
+    consumer:
+      group-id: ${spring.application.name}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:9090/eureka/
     fetch-registry: true
     register-with-eureka: true
-
 
 management:
   endpoints:
@@ -22,4 +36,3 @@ management:
   endpoint:
     health:
       show-details: always
-

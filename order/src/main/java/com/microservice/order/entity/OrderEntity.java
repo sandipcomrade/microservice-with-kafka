@@ -21,4 +21,5 @@ public class OrderEntity {
     private String orderName;
     private boolean active;
     private String mobileNo;
+    private double amount;
 }

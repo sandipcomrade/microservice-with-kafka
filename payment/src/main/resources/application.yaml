@@ -5,6 +5,20 @@ spring:
   application:
     name: payment-service
 
+  kafka:
+    bootstrap-servers: localhost:19092
+
+    consumer:
+      group-id: ${spring.application.name}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 management:
   endpoints:
@@ -15,22 +29,6 @@ management:
   endpoint:
     health:
       show-details: always
-
-# Kafka Config (commented)
-# spring.kafka.bootstrap-servers: localhost:9092
-#
-# spring.kafka.producer:
-#   key-serializer: org.apache.kafka.common.serialization.StringSerializer
-#   value-serializer: org.apache.kafka.common.serialization.StringSerializer
-#
-# spring.kafka.consumer:
-#   group-id: default-group
-#   key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#   value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#   auto-offset-reset: earliest
-#   enable-auto-commit: true
-#   max-poll-records: 500
-
 
 eureka:
   client:
